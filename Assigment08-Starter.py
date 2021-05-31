@@ -5,7 +5,8 @@
 # ChangeLog (Who,When,What):
 # RRoot,1.1.2030,Created started script
 # RRoot,1.1.2030,Added pseudo-code to start assignment 8
-# <Your Name>,<Today's Date>,Modified code to complete assignment 8
+# DFerenczy,5.31.2021,Modified code to complete assignment 8
+# DFerenczy,5.31.2021,Added Product class code
 # ------------------------------------------------------------------------ #
 
 # Data -------------------------------------------------------------------- #
@@ -23,8 +24,47 @@ class Product:
         RRoot,1.1.2030,Created Class
         <Your Name>,<Today's Date>,Modified code to complete assignment 8
     """
-    pass
-    # TODO: Add Code to the Product class
+
+    # --Fields--
+    # strProductName = ''
+    # floatProductPrice = 0.00
+
+    # -- Constructor --
+    def __init__(self, product_name='', product_price=0.00):
+        # -- Attributes --
+        self.ProductName = product_name
+        self.ProductPrice = product_price
+
+    # -- Properties --
+    @property  # DON'T USE NAME for this directive!
+    def product_name(self):  # (getter or accessor)
+        return str(self.product_name).title()  # Title case
+
+    @product_name.setter  # The NAME MUST MATCH the property's!
+    def product_name(self, value):  # (setter or mutator)
+        if str(value).isnumeric() == False:
+            self.__product_name = value
+        else:
+            raise Exception("Names cannot be numbers")
+
+    @property  # DON'T USE NAME for this directive!
+    def product_price(self):  # (getter or accessor)
+        return str(self.product_price).title()  # Title case
+
+    @product_name.setter  # The NAME MUST MATCH the property's!
+    def product_name(self, value):  # (setter or mutator)
+        if str(value).isnumeric() != False:
+            self.__product_price = value
+        else:
+            raise Exception("Please enter a valid price")
+
+    # -- Methods --
+
+    def __str__(self):
+        return '{self.ProductName}, ${self.ProductPrice}'.format(self=self)
+
+
+# --End of class--
 # Data -------------------------------------------------------------------- #
 
 # Processing  ------------------------------------------------------------- #
